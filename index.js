@@ -1,6 +1,7 @@
 const ting=new Audio('ting.mp3');
 const wrong=new Audio('gameover.mp3');
 const timerSound=new Audio('timer.mp3');
+timerSound.play();
 let score=0;
 let hit=0;
 function makeBubble(){
@@ -20,6 +21,7 @@ function newHit(){
 
 function time(){
     let timer=60;
+    
     const id=setInterval(()=>{
         if(timer>0){
             timerSound.play();
@@ -28,6 +30,7 @@ function time(){
         }
         else{
             timerSound.pause();
+            wrong.pause();
       clearInterval(id);
       document.querySelector('.hit').textContent=0;
       document.querySelector('.score').textContent=0;
@@ -65,6 +68,9 @@ pbottom.addEventListener('click',(e)=>{
         if(score!=0){
             wrong.play();
             scoreDecrment();
+        }
+        else{
+            wrong.play();
         }
     }
 
